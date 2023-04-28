@@ -3,6 +3,7 @@ from tkinter import ttk
 from tkinter import messagebox
 import smtplib
 import random
+import validators
 
 root = tk.Tk()
 root.title("OTP Verification")
@@ -16,8 +17,9 @@ email_entry.place(x=80,y=50,width=175)
 #----send otp call back function---#
 def send_otp_fun():
     email_add=email_entry.get()
-    #validation 
-    if "@" and ".com" in email_add or "@" and "rku.ac.in" in email_add:
+    #validation
+    isValid=validators.email(email_add)
+    if isValid==True:
         otp_number=""
         #generating otp number using random module
         for i in range(6):
